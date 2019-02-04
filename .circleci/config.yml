@@ -1,12 +1,13 @@
 version: 2
 jobs:
  build:
-   machine: true
-   steps:
-     - checkout
+    context: docker-hub
+    machine: true
+    steps:
+      - checkout
 
-     - run: docker build -t jimrazmus/awscli .
+      - run: docker build -t jimrazmus/awscli .
 
-     - run: |
+      - run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS
         docker push jimrazmus/awscli:latest
