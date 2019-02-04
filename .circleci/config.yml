@@ -9,5 +9,5 @@ jobs:
       - run: docker build -t jimrazmus/awscli .
 
       - run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
           docker push jimrazmus/awscli:latest
